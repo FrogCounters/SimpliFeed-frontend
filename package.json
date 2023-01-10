@@ -26,5 +26,10 @@
     "eslint-config-prettier": "^8.5.0",
     "postcss": "^8.4.17",
     "prettier": "^2.7.1"
+  },
+  "overrides": {
+    "@nuxtjs/tailwindcss": {
+      "@nuxt/kit": "3.0.0-rc.13"
+    }
   }
 }
