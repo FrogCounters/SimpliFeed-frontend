@@ -26,11 +26,7 @@
           'py-8'
         ]"
       >
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
+        <ArticleCard v-for="preview in previews" :key="preview.news_id" :news_id="preview.news_id" :title="preview.title" :summary="preview.summary" :img="preview.image_url" />
       </div>
     </div>
   </div>
@@ -45,6 +41,7 @@ export default defineComponent({
     return {
       categories: ['Crypto', 'Markets', 'Forex', 'Others'],
       focusIndex: 0,
+      previews: [{news_id: 1, title: "", summary: "", image_url: ""}]
     }
   },
   methods: {
@@ -52,6 +49,14 @@ export default defineComponent({
       console.log(index)
       this.focusIndex = index
     },
+    getPreviews() {
+      fetch("http://localhost:8000")
+        .then((response) => response.json())
+        .then((data) => (this.previews = data))
+    },
+  },
+  mounted() {
+    this.getPreviews()
   },
 })
 </script>
