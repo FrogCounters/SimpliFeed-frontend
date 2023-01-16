@@ -14,15 +14,22 @@
     <div class="w-full max-w-screen-lg">
       <div class="w-full flex flex-row justify-end">
         <div
-          class="px-4 py-2 rounded-tr rounded-tl bg-purple-accent cursor-pointer"
-          @click="() => toggleText()"
+          class="px-4 py-2 mr-1 rounded-tr rounded-tl bg-beige-accent cursor-pointer"
+          @click="() => toggleText(false)"
         >
-          {{ simplified == true ? 'simplified' : 'original' }}
+          original
+        </div>
+        <div
+          class="px-4 py-2 rounded-tr rounded-tl bg-purple-accent cursor-pointer"
+          @click="() => toggleText(true)"
+        >
+          simplified
         </div>
       </div>
       <div class="w-full flex flex-row">
         <div
-          class="w-12 bg-purple-accent rounded-tl rounded-bl shadow-inner"
+          class="w-12 rounded-tl rounded-bl shadow-inner"
+          v-bind:class="simplified ? 'bg-purple-accent' : 'bg-beige-accent'"
         ></div>
         <div
           class="w-full p-8 font-light text-lg text-stone-800 whitespace-pre-wrap bg-white rounded-tl rounded-bl shadow-lg"
@@ -52,8 +59,12 @@ export default defineComponent({
     },
   },
   methods: {
-    toggleText: function () {
-      this.simplified = !this.simplified
+    toggleText: function (is_simplified: boolean) {
+      if (is_simplified) {
+        this.simplified = true
+      } else {
+        this.simplified = false
+      }
     },
   },
 })

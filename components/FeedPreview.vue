@@ -87,9 +87,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.left {
-}
-
 .right {
   background-color: #b1aeea;
 }
