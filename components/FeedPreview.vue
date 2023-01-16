@@ -43,7 +43,7 @@
 import { defineComponent } from 'vue'
 import { API_URl } from '~/utils/config'
 
-const CATEGORIES = ['All', 'General', 'Economics', 'Stocks', 'Crypto']
+const CATEGORIES = ['All', 'Crypto', 'Economics', 'Stocks', 'General']
 const LOADING_STATE = [
   { news_id: 1, title: '', summary: '', image_url: '', category: '' },
   { news_id: 2, title: '', summary: '', image_url: '', category: '' },
