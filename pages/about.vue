@@ -24,5 +24,11 @@
       <b>SimpliFeed</b> is a powerful resource for helping younger audiences
       understand finance and make smart financial decisions.
     </p>
+    <p class="mt-7">
+      Our frontend was written in <b>Vue.js</b> while our backend makes use of
+      <b>python</b> and <b>FastAPI</b>. Additionally, our app interfaces with a
+      custom-trained machine learning model deployed using <b>AWS Sagemaker</b>,
+      <b>AWS Lambda</b> and <b>AWS API Gateway</b>.
+    </p>
   </div>
 </template>
