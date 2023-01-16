@@ -13,7 +13,7 @@
     >
       {{ label }}
     </div>
-    <div :class="[ inFocus ? 'bg-accent' : 'bg-none', 'w-2']"></div>
+    <div :class="[inFocus ? 'bg-accent' : 'bg-none', 'w-2']"></div>
   </div>
 </template>
 

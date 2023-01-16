@@ -5,7 +5,7 @@
         <div
           v-for="(category, index) in categories"
           :key="category"
-          @click="() => selectTab(index)"
+          @click="() => selectTab(index, category)"
         >
           <Tab :label="category" :inFocus="index == focusIndex" />
         </div>
@@ -23,10 +23,17 @@
           'flex-wrap',
           'justify-center',
           'content-around',
-          'py-8'
+          'py-8',
         ]"
       >
-        <ArticleCard v-for="preview in previews" :key="preview.news_id" :news_id="preview.news_id" :title="preview.title" :summary="preview.summary" :img="preview.image_url" />
+        <ArticleCard
+          v-for="preview in previews"
+          :key="preview.news_id"
+          :news_id="preview.news_id"
+          :title="preview.title"
+          :summary="preview.summary"
+          :img="preview.image_url"
+        />
       </div>
     </div>
   </div>
@@ -34,25 +41,43 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { API_URl } from '~/utils/config'
+
+const CATEGORIES = ['All', 'General', 'Economics', 'Stocks', 'Crypto']
+const LOADING_STATE = [
+  { news_id: 1, title: '', summary: '', image_url: '', category: '' },
+  { news_id: 2, title: '', summary: '', image_url: '', category: '' },
+  { news_id: 3, title: '', summary: '', image_url: '', category: '' },
+  { news_id: 4, title: '', summary: '', image_url: '', category: '' },
+]
 
 export default defineComponent({
   name: 'FeedPreview',
   data: function () {
     return {
-      categories: ['Crypto', 'Markets', 'Forex', 'Others'],
-      focusIndex: 0,
-      previews: [{news_id: 1, title: "", summary: "", image_url: ""}]
+      categories: CATEGORIES,
+      focusIndex: Number(localStorage.getItem('focusIndex')) || 0,
+      previews: LOADING_STATE,
+      default: LOADING_STATE,
     }
   },
   methods: {
-    selectTab: function (index: number) {
-      console.log(index)
+    selectTab: function (index: number, category: string) {
       this.focusIndex = index
+      if (category == 'All') {
+        this.previews = this.default
+      } else {
+        this.previews = this.default.filter((x) => x.category == category)
+      }
+      localStorage.setItem('focusIndex', String(index))
     },
     getPreviews() {
-      fetch("http://localhost:8000")
+      fetch(API_URl)
         .then((response) => response.json())
-        .then((data) => (this.previews = data))
+        .then((data) => {
+          this.default = data
+          this.selectTab(this.focusIndex, CATEGORIES[this.focusIndex])
+        })
     },
   },
   mounted() {

@@ -30,7 +30,10 @@
       <div
         class="text-fg absolute top-6 left-0 w-full h-full flex flex-col items-center justify-center"
       >
-        <div class="rubik text-6xl font-semibold">Financial news<br /><span class="accent font-bold">simplified</span> for all</div>
+        <div class="rubik text-6xl font-semibold">
+          Financial news<br /><span class="accent font-bold">simplified</span>
+          for all
+        </div>
       </div>
     </div>
     <div class="mt-8 flex flex-row justify-center">
@@ -55,6 +58,6 @@ export default Vue.extend({
 }
 
 .accent {
-  color: #928EE2;
+  color: #928ee2;
 }
 </style>

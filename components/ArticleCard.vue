@@ -2,12 +2,21 @@
   <div class="rounded overflow-hidden m-6 shadow-lg">
     <NuxtLink :to="'/article/' + String(news_id)">
       <div class="w-64 flex flex-col">
-        <img class="h-32 w-full" v-bind:src="img ? img : 'https://media.zenfs.com/en/valuepenguin_951/28473626fac94922e228d387f48725b1'">
+        <img
+          class="h-32 w-full"
+          v-bind:src="
+            img
+              ? img
+              : 'https://media.zenfs.com/en/valuepenguin_951/28473626fac94922e228d387f48725b1'
+          "
+        />
         <div class="bg-white w-full h-full flex flex-col">
           <div class="font-medium h-20 pt-2 px-4 overflow-hidden text-ellipsis">
             {{ title }}
           </div>
-          <div class="text-stone-500 text-sm h-12 px-4 overflow-hidden text-ellipsis">
+          <div
+            class="text-stone-500 text-sm h-12 px-4 overflow-hidden text-ellipsis overflow-y-auto scrollbar-hide"
+          >
             {{ summary }}
           </div>
           <div class="self-end text-sm place-self-end px-4 py-2">
@@ -39,10 +48,17 @@ export default defineComponent({
     },
     img: {
       type: String,
-    }
+    },
   },
 })
 </script>
 
 <style scoped>
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: 2px;
+}
 </style>
