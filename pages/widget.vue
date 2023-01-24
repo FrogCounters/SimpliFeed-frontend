@@ -36,42 +36,47 @@
       </div>
     </div>
     <div class="mt-8 flex flex-row justify-center text-2xl font-medium">
-      Integrate SimpliFeed news onto your personal site in less than 1 minute.
+      Integrate our customisable SimpliFeed news widget onto your personal site in less than 1 minute.
     </div>
 
     <div class="w-fit m-auto mt-5">
-      <!-- <div class="bg-slate-100 p-2 rounded-lg flex">
-        <div>
+      <div class="bg-slate-100 p-2 rounded-lg flex mb-2">
+        <div class="mr-4">
           Theme:
-          <select>
-            <option>Light</option>
-            <option>Dark</option>
+          <select @change="(e) => handleChange(e, 'theme')">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
           </select>
         </div>
-        <div>
+        <div class="mr-4">
           Feed:
-          <select>
-            <option>Stocks</option>
-            <option>Crypto</option>
+          <select @change="(e) => handleChange(e, 'feed')">
+            <option value="crypto">Crypto</option>
+            <option value="all">All</option>
+            <option value="economics">Economics</option>
+            <option value="stocks">Stocks</option>
+            <option value="general">General</option>
           </select>
         </div>
         <div>
           Image:
-          <select>
-            <option>No</option>
-            <option>Yes</option>
+          <select @change="(e) => handleChange(e, 'image')">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
           </select>
         </div>
-      </div> -->
-      <div id="widget"></div>
+      </div>
       <pre class="bg-slate-100 p-2 rounded-lg whitespace-pre-line">
           {{ `&lt;link rel="stylesheet" href="${frontend_url}/widget.css"/>` }}
           {{ `&lt;script src="${frontend_url}/widget.js">&lt;/script>` }}
           &lt;script>
-          &emsp;&emsp;Widget({ theme: "light", type: "crypto", image: false })
+          {{
+          `&emsp;&emsp;Widget({ theme: "${theme}", type: "${feed}", image: ${imagePreview} })`
+        }}
           &lt;/script>
           &lt;div id="widget">&lt;/div>
-      </pre>
+        </pre
+      >
       <button
         class="accent-bg py-1 px-3 mt-2 rounded-lg"
         type="button"
@@ -83,17 +88,14 @@
   </div>
 </template>
 
-<!-- <link rel="stylesheet" href="http://localhost:3000/widget.css" />
-<script src="http://localhost:3000/widget.js" defer></script>
-<script>
-Widget({ theme: 'light', type: 'crypto', image: false })
-</script> -->
-
 <script>
 import Vue from 'vue'
 
 export default Vue.extend({
   name: 'WidgetPage',
+  // mounted() {
+  //   Widget()
+  // },
   methods: {
     copyText() {
       const text = `
@@ -106,6 +108,21 @@ export default Vue.extend({
       `
       navigator.clipboard.writeText(text)
       this.buttonText = 'Copied!'
+    },
+    handleChange(e, category) {
+      if (e.target.options.selectedIndex > -1) {
+        const value = e.target.options[e.target.options.selectedIndex].value
+        switch (category) {
+          case 'image':
+            this.imagePreview = value
+            break
+          case 'feed':
+            this.feed = value
+            break
+          case 'theme':
+            this.theme = value
+        }
+      }
     },
   },
   data: function () {
