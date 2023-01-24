@@ -100,7 +100,7 @@ export default Vue.extend({
         <link rel="stylesheet" href="${this.frontend_url}/widget.css"/>
         \<script src="${this.frontend_url}/widget.js"><\/script>
         \<script>
-            Widget({ theme: ${this.theme}, type: ${this.feed}, image: ${this.imagePreview} })
+            Widget({ theme: "${this.theme}", type: "${this.feed}", image: ${this.imagePreview} })
         <\/script>
         <div id="widget"></div>
       `
