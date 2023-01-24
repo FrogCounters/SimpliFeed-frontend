@@ -30,16 +30,19 @@
       <div
         class="text-fg absolute top-6 left-0 w-full h-full flex flex-col items-center justify-center"
       >
-        <div class="rubik text-6xl font-semibold">
+        <div class="rubik text-4xl md:text-6xl font-semibold text-center">
           SimpliFeed widget for <span class="accent font-bold">developers</span>
         </div>
       </div>
     </div>
-    <div class="mt-8 flex flex-row justify-center text-2xl font-medium">
-      Integrate our customisable SimpliFeed news widget onto your personal site in less than 1 minute.
+    <div
+      class="mt-8 flex flex-row justify-center text-2xl font-medium text-center"
+    >
+      Integrate our customisable SimpliFeed news widget onto your personal site
+      in less than 1 minute.
     </div>
 
-    <div class="w-fit m-auto mt-5">
+    <div class="w-fit m-auto mt-5 max-w-[95vw] m-auto">
       <div class="bg-slate-100 p-2 rounded-lg flex mb-2">
         <div class="mr-4">
           Theme:
@@ -66,7 +69,9 @@
           </select>
         </div>
       </div>
-      <pre class="bg-slate-100 p-2 rounded-lg whitespace-pre-line">
+      <pre
+        class="bg-slate-100 p-2 rounded-lg whitespace-pre-line overflow-x-auto"
+      >
           {{ `&lt;link rel="stylesheet" href="${frontend_url}/widget.css"/>` }}
           {{ `&lt;script src="${frontend_url}/widget.js">&lt;/script>` }}
           &lt;script>

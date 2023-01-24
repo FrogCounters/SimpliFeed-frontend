@@ -3,7 +3,8 @@
     <div
       :class="[
         inFocus ? 'bg-accent' : 'bg-slate-200',
-        'text-xl',
+        'text-md',
+        'md:text-xl',
         'w-full',
         'px-3',
         'py-2',

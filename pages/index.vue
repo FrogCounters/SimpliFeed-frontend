@@ -30,7 +30,7 @@
       <div
         class="text-fg absolute top-6 left-0 w-full h-full flex flex-col items-center justify-center"
       >
-        <div class="rubik text-6xl font-semibold">
+        <div class="rubik text-4xl md:text-6xl font-semibold text-center">
           Financial news<br /><span class="accent font-bold">simplified</span>
           for all
         </div>

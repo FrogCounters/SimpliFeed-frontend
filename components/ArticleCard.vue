@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded overflow-hidden m-6 shadow-lg">
+  <div class="rounded overflow-hidden m-3 md:m-6 shadow-lg">
     <NuxtLink :to="'/article/' + String(news_id)">
       <div class="w-64 flex flex-col">
         <img
