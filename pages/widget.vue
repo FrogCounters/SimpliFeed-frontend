@@ -65,8 +65,8 @@
       </div> -->
       <div id="widget"></div>
       <pre class="bg-slate-100 p-2 rounded-lg whitespace-pre-line">
-          {{ `&lt;link rel="stylesheet" href="${api_url}/widget.css"/>` }}
-          {{ `&lt;script src="${api_url}/widget.js">&lt;/script>` }}
+          {{ `&lt;link rel="stylesheet" href="${frontend_url}/widget.css"/>` }}
+          {{ `&lt;script src="${frontend_url}/widget.js">&lt;/script>` }}
           &lt;script>
           &emsp;&emsp;Widget({ theme: "light", type: "crypto", image: false })
           &lt;/script>
@@ -91,15 +91,14 @@ Widget({ theme: 'light', type: 'crypto', image: false })
 
 <script>
 import Vue from 'vue'
-import { API_URl } from '~/utils/config'
 
 export default Vue.extend({
   name: 'WidgetPage',
   methods: {
     copyText() {
       const text = `
-        <link rel="stylesheet" href="${API_URl}/widget.css"/>
-        \<script src="${API_URl}/widget.js"><\/script>
+        <link rel="stylesheet" href="${this.frontend_url}/widget.css"/>
+        \<script src="${this.frontend_url}/widget.js"><\/script>
         \<script>
             Widget({ theme: ${this.theme}, type: ${this.feed}, image: ${this.imagePreview} })
         <\/script>
@@ -115,7 +114,7 @@ export default Vue.extend({
       imagePreview: false,
       theme: 'light',
       feed: 'crypto',
-      api_url: API_URl,
+      frontend_url: 'https://simplifeed.netlify.app',
     }
   },
 })
