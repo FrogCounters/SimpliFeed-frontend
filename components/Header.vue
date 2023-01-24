@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-16 relative w-full max-w-screen-xl mx-auto flex flex-row justify-between items-center"
+    class="h-16 relative w-full max-w-screen-xl mx-auto flex flex-row justify-between items-center navHeader"
   >
     <NuxtLink to="/">
       <div class="text-xl font-bold px-6">SimpliFeed</div>

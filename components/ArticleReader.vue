@@ -34,22 +34,42 @@
         <div
           class="w-full p-8 font-light text-lg text-stone-800 whitespace-pre-wrap bg-white rounded-tl rounded-bl shadow-lg"
         >
-          <span v-if="simplified == true">{{ article.summary }}</span>
-          <span v-else>{{ article.actual_content }}</span>
+          <div
+            v-if="simplified == true && article.summary"
+            class="whitespace-normal"
+          >
+            <div class="text-right">
+              <range-slider
+                min="0"
+                max="3"
+                step="1"
+                v-model="value"
+                @change="() => sliderValue()"
+              />
+            </div>
+            {{ article.summary[value] }}
+          </div>
+          <div v-else>{{ article.actual_content }}</div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
+import RangeSlider from 'vue-range-slider'
+import 'vue-range-slider/dist/vue-range-slider.css'
 
 export default defineComponent({
   name: 'ArticleReader',
+  components: {
+    RangeSlider,
+  },
   data: function () {
     return {
       simplified: true,
+      value: localStorage.getItem('sliderPreference') || 2,
     }
   },
   props: {
@@ -59,12 +79,15 @@ export default defineComponent({
     },
   },
   methods: {
-    toggleText: function (is_simplified: boolean) {
+    toggleText: function (is_simplified) {
       if (is_simplified) {
         this.simplified = true
       } else {
         this.simplified = false
       }
+    },
+    sliderValue: function () {
+      localStorage.setItem('sliderPreference', this.value)
     },
   },
 })
@@ -81,5 +104,9 @@ export default defineComponent({
 
 .bg-beige-accent {
   background-color: #fed0ab;
+}
+
+.range-slider-fill {
+  background-color: #928ee2 !important;
 }
 </style>

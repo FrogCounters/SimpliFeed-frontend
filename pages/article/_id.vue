@@ -18,6 +18,7 @@ export default {
       fetch(`${API_URl}/article?news_id=${this.$route.params.id}`)
         .then((response) => response.json())
         .then((data) => (this.article = data))
+        .then((data) => console.log(data))
     },
   },
   mounted() {

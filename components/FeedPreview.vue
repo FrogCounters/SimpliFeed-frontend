@@ -31,7 +31,7 @@
           :key="preview.news_id"
           :news_id="preview.news_id"
           :title="preview.title"
-          :summary="preview.summary"
+          :summary="preview.summary[0]"
           :img="preview.image_url"
         />
       </div>
@@ -45,10 +45,34 @@ import { API_URl } from '~/utils/config'
 
 const CATEGORIES = ['All', 'Crypto', 'Economics', 'Stocks', 'General']
 const LOADING_STATE = [
-  { news_id: 1, title: '', summary: '', image_url: '', category: '' },
-  { news_id: 2, title: '', summary: '', image_url: '', category: '' },
-  { news_id: 3, title: '', summary: '', image_url: '', category: '' },
-  { news_id: 4, title: '', summary: '', image_url: '', category: '' },
+  {
+    news_id: 1,
+    title: '',
+    summary: [''],
+    image_url: '',
+    category: '',
+  },
+  {
+    news_id: 2,
+    title: '',
+    summary: [''],
+    image_url: '',
+    category: '',
+  },
+  {
+    news_id: 3,
+    title: '',
+    summary: [''],
+    image_url: '',
+    category: '',
+  },
+  {
+    news_id: 4,
+    title: '',
+    summary: [''],
+    image_url: '',
+    category: '',
+  },
 ]
 
 export default defineComponent({
