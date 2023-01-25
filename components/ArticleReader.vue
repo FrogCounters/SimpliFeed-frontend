@@ -3,6 +3,11 @@
     <h2 class="text-xl font-semibold">{{ article.title }}</h2>
     <p class="text-stone-500">{{ article.author }}</p>
     <p class="text-stone-500">{{ article.published_date }}</p>
+    <p class="text-stone-500 underline">
+      <a :href="article.url" target="_blank">{{
+        article.url && 'Visit Link'
+      }}</a>
+    </p>
     <img
       class="h-64 my-8"
       v-bind:src="
