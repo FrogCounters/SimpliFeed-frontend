@@ -73,8 +73,8 @@ export default defineComponent({
   },
   data: function () {
     return {
-      simplified: true,
-      value: localStorage.getItem('sliderPreference') || 2,
+      simplified: false,
+      value: localStorage.getItem('sliderPreference') || 1,
     }
   },
   props: {
@@ -110,8 +110,7 @@ export default defineComponent({
 .bg-beige-accent {
   background-color: #fed0ab;
 }
-
-.range-slider-fill {
-  background-color: #928ee2 !important;
+.range-slider {
+  width: 90px;
 }
 </style>

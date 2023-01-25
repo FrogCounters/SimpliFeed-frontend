@@ -115,6 +115,8 @@
   border: 0;
   padding: 7px;
   border-radius: 30px;
+  width: fit-content;
+  height: fit-content;
 }
 
 #brand:hover {
