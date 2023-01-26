@@ -31,7 +31,7 @@
           :key="preview.news_id"
           :news_id="preview.news_id"
           :title="preview.title"
-          :summary="preview.summary[0]"
+          :summary="preview.summary[1]"
           :img="preview.image_url"
         />
       </div>

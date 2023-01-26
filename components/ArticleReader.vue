@@ -46,7 +46,7 @@
             <div class="text-right">
               <range-slider
                 min="0"
-                max="3"
+                max="1"
                 step="1"
                 v-model="value"
                 @change="() => sliderValue()"
